@@ -1,0 +1,124 @@
+/* ==========================
+      FOOTER WRAPPER
+========================== */
+
+.footer_outer_container {
+  width: 100%;
+  background-color: #141414;   /* Netflix dark */
+  display: flex;
+  justify-content: center;
+  padding: 50px 0 25px;
+}
+
+/* ==========================
+      INNER CONTAINER
+========================== */
+
+.footer_inner_container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  color: #b3b3b3;
+}
+
+/* ==========================
+        ICONS
+========================== */
+
+.footer_icons {
+  display: flex;
+  gap: 25px;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.footer_icons svg {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer_icons svg:hover {
+  color: white;
+}
+
+/* ==========================
+       LINKS GRID
+========================== */
+
+.footer_data {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.footer_data ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer_data li {
+  margin-bottom: 13px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer_data li:hover {
+  color: white;
+}
+
+/* ==========================
+        SERVICE CODE
+========================== */
+
+.service_code {
+  border: 1px solid #808080;
+  width: fit-content;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.service_code:hover {
+  color: white;
+  border-color: white;
+}
+
+/* ==========================
+         COPYRIGHT
+========================== */
+
+.copy_write {
+  font-size: 12px;
+  color: #808080;
+}
+
+/* ==========================
+        MOBILE VIEW
+========================== */
+
+@media (max-width: 900px) {
+
+  .footer_inner_container {
+    padding: 0 20px;
+  }
+
+  .footer_data {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+
+  .footer_data {
+    grid-template-columns: 1fr;
+  }
+
+  .footer_icons {
+    justify-content: center;
+  }
+}
