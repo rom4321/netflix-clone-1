@@ -1,42 +1,44 @@
 import { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import requests from "../../utils/requests";
+import "./banner.css";
 
 function Banner() {
   const [movie, setMovie] = useState(null);
 
-  // Shorten overview text
-  const truncate = (string, n) => {
-    return string?.length > n
-      ? string.substr(0, n - 1) + "..."
-      : string;
-  };
-
   useEffect(() => {
-    (async () => {
+    async function fetchMovie() {
       try {
-        const request = await axios.get(requests.fetchNetflixOriginals);
+        const response = await axios.get(requests.fetchNetflixOriginals);
+        
+        const movies = response.data.results;
 
-        // Pick random movie
-        setMovie(
-          request.data.results[
-            Math.floor(Math.random() * request.data.results.length)
-          ]
-        );
+        const randomMovie =
+          movies[Math.floor(Math.random() * movies.length)];
+
+        setMovie(randomMovie);
+
+        console.log("Banner movie:", randomMovie);
+
       } catch (error) {
-        console.error("API error:", error);
+        console.error("Banner fetch error:", error);
       }
-    })();
+    }
+
+    fetchMovie();
   }, []);
 
   return (
     <header
       className="banner"
       style={{
+        backgroundImage: movie?.backdrop_path
+          ? `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`
+          : "linear-gradient(#111,#333)",
+
         backgroundSize: "cover",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
         backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
+        backgroundRepeat: "no-repeat"
       }}
     >
       <div className="banner_contents">
@@ -45,12 +47,12 @@ function Banner() {
         </h1>
 
         <div className="banner_buttons">
-          <button className="banner_button play">Play</button>
+          <button className="banner_button">Play</button>
           <button className="banner_button">My List</button>
         </div>
 
         <p className="banner_description">
-          {truncate(movie?.overview, 150)}
+          {movie?.overview}
         </p>
       </div>
 
