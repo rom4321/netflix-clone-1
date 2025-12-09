@@ -1,6 +1,6 @@
 import React from 'react'
 import Row from "../Rows"
-import axios from "../../../utils/axios"
+
 import requests from "../../../utils/requests"
 const RowList = () => {
   return (
